@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "680052849827",
+    "project_id": "vocaproject-126fd",
+    "storage_bucket": "vocaproject-126fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680052849827:android:27e9773e0d4a08e75a5316",
+        "android_client_info": {
+          "package_name": "com.example.vocaproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680052849827-t4vandmh9okqd0f8ah31bcm0ni0muecv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALZJ5wDIOYueC0LJ3zUmIwqk2rsHidaTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680052849827-t4vandmh9okqd0f8ah31bcm0ni0muecv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
