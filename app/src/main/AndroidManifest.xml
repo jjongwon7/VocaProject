@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaProject">
         <activity
+            android:name=".PushSettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BackgroundSettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RemindActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StudyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".InfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity

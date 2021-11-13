@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#E2EAFD"
+    android:id="@+id/setting"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_push"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="PUSH 알림설정"/>
+    <Button
+        android:id="@+id/btn_background"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="배경 변경"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="메뉴 닫기"/>
+
+</LinearLayout>

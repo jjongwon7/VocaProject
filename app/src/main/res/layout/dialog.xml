@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_study"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="학습하기"/>
+    <Button
+        android:id="@+id/btn_remind"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="리마인드"/>
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="테스트"/>
+
+</LinearLayout>
