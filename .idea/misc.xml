@@ -3,20 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.34444444444444444" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_background_setting.xml" value="0.2046875" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_info.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_push_setting.xml" value="0.2046875" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_main.xml" value="0.17097264437689969" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_remind.xml" value="0.2046875" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_study.xml" value="0.2046875" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_test.xml" value="0.2046875" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/dialog.xml" value="0.33" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/layout_recycler_item.xml" value="0.1" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/setting.xml" value="0.16826923076923078" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>
