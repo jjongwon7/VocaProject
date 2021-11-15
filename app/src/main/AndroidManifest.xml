@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaProject">
         <activity
+            android:name=".Bookmark"
+            android:exported="true" />
+        <activity
             android:name=".PushSettingActivity"
             android:exported="true" />
         <activity
@@ -36,8 +39,9 @@
         <activity
             android:name=".WordDBOpen"
             android:exported="true" />
-        <activity android:name=".Calender"
-            android:exported="true"/>
+        <activity
+            android:name=".Calender"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

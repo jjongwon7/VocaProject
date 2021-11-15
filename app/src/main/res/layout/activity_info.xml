@@ -4,10 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="info"/>
+    tools:context=".InfoActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/info_login"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="로그인 / 회원가입"
+        android:textSize="30dp"
+        />
+    <Button
+        android:id="@+id/info_calendar"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="캘린더"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        />
+    <Button
+        android:id="@+id/info_bookmark"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="북마크"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        />
+
+
 
 </LinearLayout>
