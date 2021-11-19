@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!--각각의 텍스트뷰 아이디 : rem_단원_n번째_뜻유무-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RemindActivity">
+    android:id="@+id/frame">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="remind"/>
+        android:id="@+id/rem_1_1_1"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Passport"
+        android:clickable="true"
+        android:textStyle="bold"
+        android:visibility="visible"
+        />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/rem_1_1_2"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Passport \n\n1. 여권\n2. 수단\n\n ex) i lost my passport."
+        android:textStyle="bold"
+        android:clickable="false"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/rem_1_2_1"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Airport "
+        android:textStyle="bold"
+        android:clickable="false"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/rem_1_2_2"
+        android:layout_width="300dp"
+        android:layout_height="502dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Airport \n\n1. 공항\n\n ex) where is the airport?"
+        android:textStyle="bold"
+        android:clickable="false"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/rem_1_3_1"
+        android:layout_width="300dp"
+        android:layout_height="499dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Boarding pass"
+        android:textStyle="bold"
+        android:clickable="false"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/rem_1_3_2"
+        android:layout_width="300dp"
+        android:layout_height="498dp"
+        android:layout_gravity="center"
+        android:background="#660000BB"
+        android:text="Boarding pass \n\n1.(여객기의)탑승권\n\n ex) Show me your boarding pass."
+        android:textStyle="bold"
+        android:clickable="false"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_gravity="bottom"
+        android:text="back" />
+
+    <Button
+        android:id="@+id/btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_gravity="bottom|right"
+        android:text="menu" />
+
+</FrameLayout>
