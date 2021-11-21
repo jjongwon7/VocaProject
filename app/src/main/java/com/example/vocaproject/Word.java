@@ -6,7 +6,11 @@ public class Word {
     private String voice;
 
     public Word(){}
-
+    public Word(String e, String k, String v){
+        english = e;
+        koreanMean = k;
+        voice = v;
+    }
     public String getEnglish() {
         return english;
     }

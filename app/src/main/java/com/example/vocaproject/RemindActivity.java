@@ -1,14 +1,20 @@
 package com.example.vocaproject;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RemindActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+
+public class RemindActivity extends WordDBOpen implements View.OnClickListener {
+
+    ArrayList<Word> arrayDB;
     Button backBtn;
     Button menuBtn;
     private String key;
@@ -22,6 +28,11 @@ public class RemindActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_remind);
         Intent intent = getIntent();
         key = intent.getStringExtra("KeyValue");
+
+
+
+        
+
 
         tv[0] = (TextView) findViewById(R.id.rem_1_1_1);
         tv[1] = (TextView) findViewById(R.id.rem_1_1_2);
@@ -91,8 +102,11 @@ public class RemindActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             //각각의 텍스트 뷰 클릭 시, 다음 뷰로 화면 전환
             case R.id.rem_1_1_1:
+
                 tv[0].setVisibility(View.GONE);
                 tv[1].setVisibility(View.VISIBLE);
+
+
 
                 break;
             case R.id.rem_1_1_2:
@@ -119,3 +133,4 @@ public class RemindActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 }
+

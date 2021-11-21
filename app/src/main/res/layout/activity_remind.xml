@@ -12,11 +12,10 @@
         android:layout_height="500dp"
         android:layout_gravity="center"
         android:background="#660000BB"
-        android:text="Passport"
         android:clickable="true"
+        android:text="Passport"
         android:textStyle="bold"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/rem_1_1_2"

@@ -1,30 +1,45 @@
 package com.example.vocaproject;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+public class MainActivity extends Calender{
+
+    private static final String TAG = "MainActivity";
     private DrawerLayout drawerLayout;
     private View drawerView;
     Dialog dialog;
+    private LocalDate tHistory; // 학습하기,리마인드,테스트 중 선택하였을 때 history 변수에 오늘 날짜를 저장
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d(TAG,"DB 이상무");
+        Log.d(TAG,history);
         //setting 관련 코드
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.setting);
@@ -87,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_airport = (Button) findViewById(R.id.btn_airport);
         btn_airport.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_airport";
@@ -96,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_transportation = (Button) findViewById(R.id.btn_transportation);
         btn_transportation.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_transportation";
@@ -105,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_hotel = (Button) findViewById(R.id.btn_hotel);
         btn_hotel.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_hotel";
@@ -114,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_sports = (Button) findViewById(R.id.btn_sports);
         btn_sports.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_sports";
@@ -123,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_restaurant = (Button) findViewById(R.id.btn_restaurant);
         btn_restaurant.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_restaurant";
@@ -132,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_shopping = (Button) findViewById(R.id.btn_shopping);
         btn_shopping.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_shopping";
@@ -141,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_communication = (Button) findViewById(R.id.btn_communication);
         btn_communication.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_communication";
@@ -150,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_emergency = (Button) findViewById(R.id.btn_emergency);
         btn_emergency.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String str = "btn_emergency";
@@ -157,43 +180,58 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+        @RequiresApi(api = Build.VERSION_CODES.O)
         public void showDialog(String str){
             dialog.show(); // 다이얼로그 띄우기
             Button btn_study = (Button) dialog.findViewById(R.id.btn_study);
             Button btn_remind = (Button) dialog.findViewById(R.id.btn_remind);
             Button btn_test = (Button) dialog.findViewById(R.id.btn_test);
 
+
             btn_study.setOnClickListener(new View.OnClickListener()
             {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, StudyActivity.class);
-                    intent.putExtra("KeyValue", str);
-                    startActivity(intent);
+                    tHistory = LocalDate.now(); // 다이얼로그의 학습하기 버튼이 눌렸을 경우 현재 시간을 history에 저장
+                    history = tHistory.toString();
+//                    Intent intent = new Intent(MainActivity.this, StudyActivity.class);
+//                    intent.putExtra("KeyValue", str);
+//                    startActivity(intent);
                     dialog.dismiss();
                 }
             });
 
             btn_remind.setOnClickListener(new View.OnClickListener()
             {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
+
+
                     Intent intent = new Intent(MainActivity.this, RemindActivity.class);
                     intent.putExtra("KeyValue", str);
                     startActivity(intent);
+
                     dialog.dismiss();
                 }
             });
 
             btn_test.setOnClickListener(new View.OnClickListener()
             {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(MainActivity.this, TestActivity.class);
                     intent.putExtra("KeyValue", str);
                     startActivity(intent);
                     dialog.dismiss();
                 }
             });
+        }
+
+        private static void transferHistory(String formattedHistory){
+        Calender.history = formattedHistory;
         }
 }
