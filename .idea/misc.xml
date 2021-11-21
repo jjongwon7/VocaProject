@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/M/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_remind.xml" value="0.2" />
-        <entry key="..\:/Users/M/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_study.xml" value="0.1" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/drawable/background.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/drawable/headbackground.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_bookmark.xml" value="0.19375" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_info.xml" value="0.19375" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_main.xml" value="0.17097264437689969" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_main.xml" value="0.38969310943833235" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_remind.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/dialog.xml" value="0.75" />
+        <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/setting.xml" value="0.35052083333333334" />
       </map>
     </option>
   </component>

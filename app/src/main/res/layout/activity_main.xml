@@ -11,31 +11,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#DADFF6">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#CDCDCD">
+            android:background="#a1aef6"
+            >
             <ImageButton
                 android:id="@+id/btn_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_settings_24"/>
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_settings_24"
+                android:background="#a1aef6"
+                />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:text="여행 가VOCA"
                 android:textSize="30dp"
                 android:gravity="center"
-                android:textColor="@color/white"
-
+                android:textColor="#000000"
+                android:typeface="serif"
                 android:layout_weight="1"/>
             <ImageButton
                 android:id="@+id/btn_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/ic_baseline_person_24"
+                android:background="#a1aef6"
                 />
         </LinearLayout>
 
@@ -53,35 +58,65 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <Button
                     android:id="@+id/btn_airport"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="출입국·기내" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:drawableTop="@drawable/airplane"
+                    android:text="출입국·기내"
+                    android:textStyle="bold"
+                    android:background="@drawable/background"
+                    android:elevation="100dp"
+                    />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_hotel"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="호텔" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="호텔"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/hotel"
+                    android:background="@drawable/background"
+                    android:elevation="10dp"
+                    />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_restaurant"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="레스토랑" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="레스토랑"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/restaurant"
+                    android:background="@drawable/background"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_communication"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="통신" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="통신"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/communication"
+                    android:background="@drawable/background"
+                    android:layout_marginBottom="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -91,35 +126,61 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <Button
                     android:id="@+id/btn_transportation"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="교통" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="교통"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/transportation"
+                    android:background="@drawable/background"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_sports"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="관광·스포츠" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="관광·스포츠"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/sports"
+                    android:background="@drawable/background"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_shopping"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="쇼핑" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="쇼핑"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/shopping"
+                    android:background="@drawable/background"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <Button
                     android:id="@+id/btn_emergency"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:text="긴급 상황" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:text="긴급 상황"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/emergency"
+                    android:background="@drawable/background"
+                    android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
         </LinearLayout>
