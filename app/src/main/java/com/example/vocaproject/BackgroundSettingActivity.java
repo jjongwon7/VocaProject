@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class BackgroundSettingActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

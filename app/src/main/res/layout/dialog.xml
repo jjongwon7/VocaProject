@@ -2,22 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#DADFF6">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어디로 이동할까요?"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
     <Button
         android:id="@+id/btn_study"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="학습하기"/>
+        android:text="학습하기"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background"/>
     <Button
         android:id="@+id/btn_remind"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="리마인드"/>
+        android:text="리마인드"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background"/>
     <Button
         android:id="@+id/btn_test"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="테스트"/>
+        android:text="테스트"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background"/>
 
 </LinearLayout>
