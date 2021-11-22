@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
 
-public class Calender extends AppCompatActivity {
+public class Calender extends UserAccount {
 
     private static final String tag = "MainActivity";
     private DatePicker datePicker;
     private TextView textView;
     static String history = "none";
-
+    private int translateHistory;
     public Calender(){}
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -26,7 +26,9 @@ public class Calender extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
-
+        if(history!="none"){
+            translateHistory = Integer.parseInt(history);
+        }
         datePicker = findViewById(R.id.datePicker);
         textView = findViewById(R.id.textview);
 
