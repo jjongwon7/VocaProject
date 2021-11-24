@@ -144,7 +144,7 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.soundbtn1:
-                //단어에 따라 사운드 변환시켜줘야
+                //단어에 따라 사운드 변환시켜줘야 함
                 Toast.makeText(getApplicationContext(), "uk", Toast.LENGTH_SHORT).show();
                 soundPool.play(soundus,1f,1f,0,0,1f);
                 break;
