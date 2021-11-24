@@ -15,7 +15,7 @@ import android.media.SoundPool;
 
 
 
-public abstract class StudyActivity extends AppCompatActivity implements View.OnClickListener {
+public class StudyActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton leftBtn;
     ImageButton rightBtn;
     ImageButton Mark;
@@ -29,7 +29,7 @@ public abstract class StudyActivity extends AppCompatActivity implements View.On
 
     int Maxlength = 3; //단어 갯수
 
-//    int checked[] = new int[Maxlength];
+    int checked[] = new int[Maxlength];
 
 
 
@@ -49,9 +49,9 @@ public abstract class StudyActivity extends AppCompatActivity implements View.On
         Intent intent = getIntent();
         key = intent.getStringExtra("KeyValue");
 
-//        for(int i = 0; i < Maxlength; i++) {
-//            checked[i] = 1;
-//        }
+        for(int i = 0; i < Maxlength; i++) {
+            checked[i] = 0;
+        }
 
         leftBtn = (ImageButton) findViewById(R.id.leftbtn);
         rightBtn = (ImageButton) findViewById(R.id.rightbtn);
@@ -93,11 +93,11 @@ public abstract class StudyActivity extends AppCompatActivity implements View.On
                 }
                  else {
                      //해당 단어가 북마크 되어있는지 먼저 확인
-//                    if(checked[index-1] == 1) {
-//                        Mark.setImageResource(R.drawable.fill_star);
-//                    }else{
-//                        Mark.setImageResource(R.drawable.empty_star);
-//                    }
+                    if(checked[index-1] == 1) {
+                        Mark.setImageResource(R.drawable.fill_star);
+                    }else{
+                        Mark.setImageResource(R.drawable.empty_star);
+                    }
                      ly[index-1].setVisibility(View.VISIBLE); //이전 레이아웃
                      word[index-1].setVisibility(View.VISIBLE);
                      ly[index].setVisibility(View.GONE);  //현재 레이아웃
@@ -116,11 +116,11 @@ public abstract class StudyActivity extends AppCompatActivity implements View.On
                 }
                 else {
                     //해당 단어가 북마크 되어있는지 먼저 확인
-//                    if(checked[index+1] == 1) {
-//                        Mark.setImageResource(R.drawable.fill_star);
-//                    }else{
-//                        Mark.setImageResource(R.drawable.empty_star);
-//                    }
+                    if(checked[index+1] == 1) {
+                        Mark.setImageResource(R.drawable.fill_star);
+                    }else{
+                        Mark.setImageResource(R.drawable.empty_star);
+                    }
                     ly[index+1].setVisibility(View.VISIBLE); //다음 레이아웃
                     word[index+1].setVisibility(View.VISIBLE);
                     ly[index].setVisibility(View.GONE); //현재 레이아웃
@@ -131,15 +131,15 @@ public abstract class StudyActivity extends AppCompatActivity implements View.On
                 break;
 
             case R.id.bookmark:
-                //북마크 됐으면 배열에 부울 트루 넣어주기 이거 실습에 있던거 참조?
-                Toast.makeText(getApplicationContext(), "star", Toast.LENGTH_SHORT).show();
-//                if(checked[index] == 0) {
-//                    Mark.setImageResource(R.drawable.fill_star);
-//                    checked[index] = 1;
-//                }else{
-//                    Mark.setImageResource(R.drawable.empty_star);
-//                    checked[index] = 0;
-//                }
+                //북마크 됐으면 배열에 값 넣어주기
+
+                if(checked[index] == 0) {
+                    Mark.setImageResource(R.drawable.fill_star);
+                    checked[index] = 1;
+                }else{
+                    Mark.setImageResource(R.drawable.empty_star);
+                    checked[index] = 0;
+                }
 
                 break;
 
