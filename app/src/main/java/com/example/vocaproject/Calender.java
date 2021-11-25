@@ -42,9 +42,7 @@ public class Calender extends LoginActivity {
             for(int i=0;i<32;i++){
                 dates[translateHistory%32] = true; // dates 배열의 오늘 날짜 인덱스에 true를 저장
             }
-
             userDB.child(currentID).child("history").child(history).setValue(translateHistory);// Firebase 계정 DB에 푸쉬
-
         }
 
         datePicker = findViewById(R.id.datePicker);
@@ -56,7 +54,9 @@ public class Calender extends LoginActivity {
             public void onDateChanged(DatePicker view,int year, int month,int date) {
 
                 // if() -> 선택된 날짜와 history가 맞다면 학습했음 출력, 아닐시 안 했음 출력
-                textView.setText(history);
+
+                    textView.setText(history);
+
                 // 학습 날짜 정보에 따라 학습했음으로 setText 해주면 될 듯 -> 색칠은 구현 가능할지 아직 모르겠다..
             }
         });
