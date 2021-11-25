@@ -25,13 +25,16 @@ public class Calender extends LoginActivity {
     private boolean[] dates = new boolean[32];
 
     public Calender(){}
-    DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("VocaProject").child("UserAccount"); // Firebase DB의 UserAccount와 연동
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
+
+        DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("VocaProject").child("UserAccount"); // Firebase DB의 UserAccount와 연동
+
         Arrays.fill(dates,false);  // dates 배열 false로 초기화
 
         if(history!="No Study this Date"){ //오늘 학습을 했을시
@@ -39,8 +42,11 @@ public class Calender extends LoginActivity {
             for(int i=0;i<32;i++){
                 dates[translateHistory%32] = true; // dates 배열의 오늘 날짜 인덱스에 true를 저장
             }
-            userDB.child(currentID).child(history).setValue(translateHistory);// Firebase 계정 DB에 푸쉬
+
+            userDB.child(currentID).child("history").child(history).setValue(translateHistory);// Firebase 계정 DB에 푸쉬
+
         }
+
         datePicker = findViewById(R.id.datePicker);
         textView = findViewById(R.id.textview);
 

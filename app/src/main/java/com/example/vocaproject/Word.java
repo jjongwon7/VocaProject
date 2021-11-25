@@ -1,16 +1,27 @@
 package com.example.vocaproject;
 
 public class Word {
+    private String category;
     private String english;
     private String koreanMean;
     private String voice;
 
     public Word(){}
-    public Word(String e, String k, String v){
+    public Word(String c, String e, String k, String v){
+        category = c;
         english = e;
         koreanMean = k;
         voice = v;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getEnglish() {
         return english;
     }
