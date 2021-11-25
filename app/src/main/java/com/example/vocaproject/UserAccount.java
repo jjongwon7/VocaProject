@@ -4,7 +4,7 @@ package com.example.vocaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserAccount extends AppCompatActivity {
+public class UserAccount extends WordDBOpen {
     private String emailId;     // 아이디
     private String password;    // 비밀번호
     private String idToken;     // 고유 토큰정보

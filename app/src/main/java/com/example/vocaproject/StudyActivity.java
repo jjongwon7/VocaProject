@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class StudyActivity extends WordDBOpen implements View.OnClickListener {
+public class StudyActivity extends UserAccount implements View.OnClickListener {
     ImageButton leftBtn;
     ImageButton rightBtn;
     ImageButton Mark1;

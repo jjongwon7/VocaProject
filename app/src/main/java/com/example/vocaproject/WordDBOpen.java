@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class WordDBOpen extends UserAccount {
+public class WordDBOpen extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;  //database를 참조하는 객체
     public ArrayList<Word> arrayList;

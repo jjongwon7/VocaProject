@@ -29,7 +29,7 @@ public class MainActivity extends Calender{
     private DrawerLayout drawerLayout;
     private View drawerView;
     Dialog dialog;
-    private LocalDate tHistory; // 학습하기,리마인드,테스트 중 선택하였을 때 history 변수에 오늘 날짜를 저장
+    private Date tHistory; // 학습하기,리마인드,테스트 중 선택하였을 때 history 변수에 오늘 날짜를 저장
 
 
 
@@ -193,8 +193,9 @@ public class MainActivity extends Calender{
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
-                    tHistory = LocalDate.now(); // 다이얼로그의 학습하기 버튼이 눌렸을 경우 현재 시간을 history에 저장
-                    history = tHistory.toString();
+                    tHistory = new Date(); // 다이얼로그의 학습하기 버튼이 눌렸을 경우 현재 시간을 history에 저장
+                    SimpleDateFormat fHistory = new SimpleDateFormat("yyyyMMdd");
+                    history = fHistory.format(tHistory);
 //                    Intent intent = new Intent(MainActivity.this, StudyActivity.class);
 //                    intent.putExtra("KeyValue", str);
 //                    startActivity(intent);

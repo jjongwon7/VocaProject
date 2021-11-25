@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class TestActivity extends WordDBOpen implements OnEditorActionListener{ //OnEditorActionListener 인터페이스 implement하기
+public class TestActivity extends UserAccount implements OnEditorActionListener{ //OnEditorActionListener 인터페이스 implement하기
 
     private String key;
     private EditText editText;

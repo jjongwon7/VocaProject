@@ -17,11 +17,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends UserAccount {
 
     private FirebaseAuth mFirebaseAuth;              // 파이어베이스 인증처리
     private DatabaseReference mDatabaseReference;    // 실시간 데이터베이스
     private EditText mEtEmail, mEtPassword;          // 회원가입 입력필드
+    static String currentID; // 현재 로그인한 계정의 ID
 
 
     @Override
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // 로그인 성공
+                            currentID = strEmail;
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish(); // 현재 액티비티 파괴

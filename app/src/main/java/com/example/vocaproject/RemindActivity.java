@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class RemindActivity extends WordDBOpen implements View.OnClickListener {
+public class RemindActivity extends UserAccount implements View.OnClickListener {
 
     ArrayList<Word> arrayDB;
     Button backBtn;
@@ -105,6 +105,11 @@ public class RemindActivity extends WordDBOpen implements View.OnClickListener {
 
                 tv[0].setVisibility(View.GONE);
                 tv[1].setVisibility(View.VISIBLE);
+
+                for(int i=0;i<30;i++){
+                    arrayList.get(i).getEnglish();
+                    arrayList.get(i).getKoreanMean();
+                }
 
 
 
