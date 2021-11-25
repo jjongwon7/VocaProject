@@ -7,7 +7,7 @@
     tools:context=".InfoActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#DADFF6">
+    >
 
     <Button
         android:id="@+id/info_login"

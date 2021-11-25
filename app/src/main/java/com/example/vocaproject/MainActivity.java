@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -29,8 +30,10 @@ public class MainActivity extends Calender{
     private DrawerLayout drawerLayout;
     private View drawerView;
     Dialog dialog;
+    Dialog dialogBackground;
     private Date tHistory; // 학습하기,리마인드,테스트 중 선택하였을 때 history 변수에 오늘 날짜를 저장
-
+    String themeColor;
+    boolean isClicked=false; // false: 라이트모드 true: 다크모드
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -38,6 +41,9 @@ public class MainActivity extends Calender{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         Log.d(TAG,"DB 이상무");
         Log.d(TAG,history);
         //setting 관련 코드
@@ -60,12 +66,18 @@ public class MainActivity extends Calender{
             }
         });
 
+        dialogBackground = new Dialog(MainActivity.this); // dialog 초기화
+        dialogBackground.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀제거
+        dialogBackground.setContentView(R.layout.background_dialog); // xml 레이아웃 파일과 연결
+
+        themeColor = ThemeUtil.modLoad(getApplicationContext());
+        ThemeUtil.applyTheme(themeColor);
+
         Button btn_background = (Button)findViewById(R.id.btn_background);
         btn_background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,BackgroundSettingActivity.class);
-                startActivity(intent);
+                showDialogBackground();
             }
         });
 
@@ -180,6 +192,33 @@ public class MainActivity extends Calender{
             }
         });
     }
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        public void showDialogBackground() {
+            dialogBackground.show(); // 다이얼로그 띄우기
+            RadioButton btn_light = (RadioButton) dialogBackground.findViewById(R.id.btn_light);
+            RadioButton btn_dark = (RadioButton) dialogBackground.findViewById(R.id.btn_dark);
+
+            btn_light.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onClick(View v) {
+                    themeColor = ThemeUtil.LIGHT_MODE;
+                    ThemeUtil.applyTheme(themeColor);
+                    ThemeUtil.modSave(getApplicationContext(), themeColor);
+                    dialog.dismiss();
+                }
+            });
+            btn_dark.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onClick(View v) {
+                    themeColor = ThemeUtil.DARK_MODE;
+                    ThemeUtil.applyTheme(themeColor);
+                    ThemeUtil.modSave(getApplicationContext(), themeColor);
+                    dialog.dismiss();
+                }
+            });
+        }
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void showDialog(String str){
             dialog.show(); // 다이얼로그 띄우기
