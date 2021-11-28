@@ -36,7 +36,7 @@ public class InfoActivity extends AppCompatActivity {
         info_bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InfoActivity.this, BookmarkActivity.class);
+                Intent intent = new Intent(InfoActivity.this, BookmarkManager.class);
                 startActivity(intent);
             }
         });

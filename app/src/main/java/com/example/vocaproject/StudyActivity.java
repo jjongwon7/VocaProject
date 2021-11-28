@@ -13,7 +13,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 
 
-public class StudyActivity extends UserAccount implements View.OnClickListener {
+public class StudyActivity extends BookmarkManager implements View.OnClickListener {
    
     ImageButton leftBtn;
     ImageButton rightBtn;

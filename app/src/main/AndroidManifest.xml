@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaProject">
         <activity
-            android:name=".BookmarkActivity"
+            android:name=".BookmarkManager"
             android:exported="true" />
         <activity
             android:name=".PushSettingActivity"

@@ -30,6 +30,11 @@ public class WordDBOpen extends AppCompatActivity {
         database = FirebaseDatabase.getInstance(); //파이어베이스 데이터베이스 연동
         databaseReference = database.getReference("VocaProject").child("Word"); // firebass의 database의 참조를 포함하는 객체에 realtime DB연동
         databaseReference.addValueEventListener(new ValueEventListener() { // arrayList<Word>에 realtimeDB에 있는 데이터를 옮김
+
+
+
+
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는 곳
