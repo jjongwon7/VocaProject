@@ -29,15 +29,27 @@ public class BookmarkManager extends LoginActivity {
         // 해당 계정의 계정 정보가 담긴 Firebase DB를 연동
 
 
+
         // DB에 업로드 되어 있는 북마크 단어 번호를 bookmark 배열에 저장
         bookmarkDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는 곳
-                Log.d(tag, "bookmarkactivity");
+                String t =String.valueOf(bookmarkSize);
+                Log.d(tag, t);
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 북마크 갯수 확인
                     bookmarkSize++;
                 }
+
+                String s =String.valueOf(bookmarkSize);
+                Log.d(tag, s);
+
+
+                newBookmarkUpload(38);
+
+                String l =String.valueOf(bookmarkSize);
+                Log.d(tag, l);
                 bookmark = new int[bookmarkSize]; // 북마크의 개수를 인덱스로 갖는 bookmark 배열 생성
 
                 int i = 0;
@@ -65,5 +77,4 @@ public class BookmarkManager extends LoginActivity {
         bookmarkDB.child(newBookmark).setValue(wordNum);
     }
 
-        // BookMark 에 해당하는 부분 출력
     }
