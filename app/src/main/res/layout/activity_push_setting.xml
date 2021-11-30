@@ -4,11 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PushSettingActivity">
+    tools:context=".PushSettingActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="push"/>
+        android:layout_gravity="center"
+        android:timePickerMode="spinner"
+        android:id="@+id/time_picker"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장"
+        android:id="@+id/btn_save"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="설정취소"
+        android:id="@+id/btn_cancel"/>
 
 </LinearLayout>

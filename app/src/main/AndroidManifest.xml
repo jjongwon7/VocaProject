@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaProject">
         <activity
-            android:name="BookmarkActivity"
-            android:exported="true"/>
+            android:name=".SettingPushAlarm"
+            android:exported="true" />
+        <activity
+            android:name=".BookmarkActivity"
+            android:exported="true" />
         <activity
             android:name=".BookmarkManager"
             android:exported="true" />
@@ -54,6 +57,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".AlarmReceiver"/>
+
     </application>
 
 </manifest>
