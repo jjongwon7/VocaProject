@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/M/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_study.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/M/AndroidStudioProjects/VocaProject/app/src/main/res/layout/study_fragment.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/drawable/background.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/drawable/headbackground.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jjong/AndroidStudioProjects/VocaProject/app/src/main/res/layout/activity_bookmark.xml" value="0.19375" />

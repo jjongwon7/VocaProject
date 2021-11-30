@@ -235,9 +235,9 @@ public class MainActivity extends Calender{
                     tHistory = new Date(); // 다이얼로그의 학습하기 버튼이 눌렸을 경우 현재 시간을 history에 저장
                     SimpleDateFormat fHistory = new SimpleDateFormat("yyyyMMdd");
                     history = fHistory.format(tHistory);
-//                    Intent intent = new Intent(MainActivity.this, StudyActivity.class);
-//                    intent.putExtra("KeyValue", str);
-//                    startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, StudyActivity.class);
+                    intent.putExtra("KeyValue", str);
+                    startActivity(intent);
                     dialog.dismiss();
                 }
             });

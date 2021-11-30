@@ -39,7 +39,14 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
     private String key;
 
     int index = 0; // 텍스트 뷰 참조 인덱스
-    
+
+
+    // arrayList -> 한 행 구성 category, english, koreanMean, voice
+    // arrayList에서 첫 번째 영단어 빼기 arrayList.get(0).getEnglish();
+    // arrayList에서 첫 번째 영단어 뜻 빼기 arrayList.get(0).getKoreanMean();
+    // 카테고리 전환시 MainActivity에서 넘어온  intent에 담긴 str을 활용하여 switch 문으로 하면 될 듯 <- 이 말 이해안되면 연락하세용 ~
+    // ex) equals(str,"btn_transportation") -> arrayList.get(20*2).getEnglish();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
