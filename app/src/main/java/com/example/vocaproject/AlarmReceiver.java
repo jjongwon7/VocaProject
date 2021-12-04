@@ -17,35 +17,41 @@ import androidx.core.app.NotificationCompat;
 public class AlarmReceiver extends BroadcastReceiver {
 
     private Context context;
-    private String channelId="alarm_channel";
+    private String channelId="alarm_channel"; // Channel id 생성
+    private final int id = 0; // Notification id 생성
 
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
 
-        Intent busRouteIntent = new Intent(context, PushSettingActivity.class);
+        // 알람 클릭시 이동할 인텐트 생성
+        Intent intentMain = new Intent(context, MainActivity.class);
+        intentMain.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addNextIntentWithParentStack(busRouteIntent);
-        PendingIntent busRoutePendingIntent = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT);
+        // Activity를 시작하는 인텐트 생성
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,1,intentMain, 0);
 
+        // 알람 콘텐츠 설정
         final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.mipmap.ic_launcher).setDefaults(Notification.DEFAULT_ALL)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setAutoCancel(true)
-                .setContentTitle("알람")
-                .setContentText("울림")
-                .setContentIntent(busRoutePendingIntent);
+                .setSmallIcon(R.mipmap.ic_banner).setDefaults(Notification.DEFAULT_ALL) // 아이콘
+                .setAutoCancel(true) // 알림을 탭하면 자동으로 알림 삭제
+                .setContentTitle("여행 가VOCA") // 제목
+                .setContentText("단어 공부할 시간입니다.") // 본문 텍스트
+                .setContentIntent(pendingIntent);
 
+
+        // notification manager 생성
         final NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
+        // 기기 SDK 버전 확인
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel(channelId, "Channel human readable title", NotificationManager.IMPORTANCE_DEFAULT);
+            // Channel 정의 생성자
+            NotificationChannel channel = new NotificationChannel(channelId, "Alarm", NotificationManager.IMPORTANCE_DEFAULT);
+            // Channel 생성
             notificationManager.createNotificationChannel(channel);
         }
 
-        int id = (int) System.currentTimeMillis();
-
+        // notification 보냄
         notificationManager.notify(id,notificationBuilder.build());
     }
 }
