@@ -12,9 +12,15 @@ import android.widget.Toast;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
+import java.util.ArrayList;
 
-public class StudyActivity extends BookmarkManager implements View.OnClickListener {
-   
+//음성파일 처리여부?
+//인텐트 담긴 카테고리 전환 코드 작성 필요
+
+public class StudyActivity extends WordDBOpen implements View.OnClickListener {
+
+    ArrayList<Word> arrayDB;
+
     ImageButton leftBtn;
     ImageButton rightBtn;
     ImageButton Mark;
@@ -24,17 +30,18 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
     ImageButton sound1;
     ImageButton sound2;
 
-    TextView text_progress;
+    TextView text_progress,Tv,mean;
+    LinearLayout Ly;
 
-    int Maxlength = 3; //단어 갯수
+    int Maxlength = 4; //단어 갯수
 
     int checked[] = new int[Maxlength];
 
 
 
-    LinearLayout ly[] = new LinearLayout[Maxlength];
+
     // 여러개의 LinearLayout를 배열로 처리하기 위해 텍스트뷰에 대해 배열 선언을 함
-    TextView word[] = new TextView[Maxlength];
+    TextView word;
     // 여러개의 텍스트뷰를 배열로 처리하기 위해 텍스트뷰에 대해 배열 선언을 함
     private String key;
 
@@ -62,18 +69,17 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
         leftBtn = (ImageButton) findViewById(R.id.leftbtn);
         rightBtn = (ImageButton) findViewById(R.id.rightbtn);
 
-        word[0] = (TextView) findViewById(R.id.word1_1);
-        word[1] = (TextView) findViewById(R.id.word1_2);
-        word[2] = (TextView) findViewById(R.id.word1_50);
+        word = (TextView) findViewById(R.id.word);
+        Tv = (TextView)findViewById(R.id.Tv1);
+        Ly = (LinearLayout)findViewById(R.id.Ly1);
 
         Mark = (ImageButton) findViewById(R.id.bookmark);
         sound1 = (ImageButton) findViewById(R.id.soundbtn1);
         sound2 = (ImageButton) findViewById(R.id.soundbtn2);
 
         text_progress = (TextView) findViewById(R.id.text_progress);
-        ly[0] = (LinearLayout) findViewById(R.id.study1_1);
-        ly[1] = (LinearLayout) findViewById(R.id.study1_2);
-        ly[2] = (LinearLayout) findViewById(R.id.study1_50);
+        mean = (TextView) findViewById(R.id.mean);
+
 
         // Button 이벤트 등록
         leftBtn.setOnClickListener(this);
@@ -81,21 +87,42 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
         Mark.setOnClickListener(this);
         sound1.setOnClickListener(this);
         sound2.setOnClickListener(this);
-
+        Tv.setOnClickListener(this);
         //sound
         soundPool = new SoundPool(5,AudioManager.STREAM_MUSIC,0);
         sounduk = soundPool.load(this,R.raw.uk,1);
         soundus = soundPool.load(this,R.raw.us,1);
 
+
+
     }
     @Override
     public void onClick(View v) {
 
+//        //FireBase의 DB에서 사용할 단어와 뜻을 arrayList에 저장
+        for(int i=0;i<4;i++){
+            arrayList.get(i).getEnglish();
+            arrayList.get(i).getKoreanMean();
+        }
+
+
+
         switch (v.getId()) {
+
+            case R.id.Tv1:
+                //뷰에 처음으로 터치 이벤트 발생 시 학습하기 페이지로 넘어감
+                Tv.setVisibility(View.GONE);
+                Ly.setVisibility(View.VISIBLE);
+
+                //첫번째 단어 출력
+                word.setText(""+arrayList.get(0).getEnglish());
+                mean.setText(""+arrayList.get(0).getKoreanMean());
+                break;
 
             case R.id.leftbtn:
                 if(index == 0){
                  Toast.makeText(getApplicationContext(), "첫번째 단어입니다.", Toast.LENGTH_SHORT).show();
+
                 }
                  else {
                      //해당 단어가 북마크 되어있는지 먼저 확인
@@ -104,13 +131,13 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
                     }else{
                         Mark.setImageResource(R.drawable.empty_star);
                     }
-                     ly[index-1].setVisibility(View.VISIBLE); //이전 레이아웃
-                     word[index-1].setVisibility(View.VISIBLE);
-                     ly[index].setVisibility(View.GONE);  //현재 레이아웃
-                     word[index].setVisibility(View.GONE);
+                    // 이전 인덱스에 해당하는 단어와 뜻으로 화면 구성하기
+                     word.setText(""+arrayList.get(index-1).getEnglish());
+                     mean.setText(""+arrayList.get(index-1).getKoreanMean());
+
                      index--;
                  }
-                 text_progress.setText((index+1)+"/50");
+                 text_progress.setText((index+1)+"/20");
                 break;
 
             case R.id.rightbtn:
@@ -127,13 +154,12 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
                     }else{
                         Mark.setImageResource(R.drawable.empty_star);
                     }
-                    ly[index+1].setVisibility(View.VISIBLE); //다음 레이아웃
-                    word[index+1].setVisibility(View.VISIBLE);
-                    ly[index].setVisibility(View.GONE); //현재 레이아웃
-                    word[index].setVisibility(View.GONE);
+                    // 다음 인덱스에 해당하는 단어와 뜻으로 화면 구성하기
+                    word.setText(""+arrayList.get(index+1).getEnglish());
+                    mean.setText(""+arrayList.get(index+1).getKoreanMean());
                     index++;
                 }
-                text_progress.setText((index+1)+"/50"); //참조 인덱스 확인하여 몇번째인지 출력
+                text_progress.setText((index+1)+"/20"); //참조 인덱스 확인하여 몇번째인지 출력
                 break;
 
             case R.id.bookmark:
