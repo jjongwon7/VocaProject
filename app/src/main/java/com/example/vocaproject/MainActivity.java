@@ -44,8 +44,6 @@ public class MainActivity extends Calender{
 
 
 
-        Log.d(TAG,"DB 이상무");
-        Log.d(TAG,history);
         //setting 관련 코드
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.setting);

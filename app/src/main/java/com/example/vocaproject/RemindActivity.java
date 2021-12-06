@@ -98,6 +98,12 @@ public class RemindActivity extends UserAccount {
             }
         });
 
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RemindActivity.this,MainActivity.class);
+            }
+        });
 
     }
 

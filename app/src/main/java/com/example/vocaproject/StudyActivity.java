@@ -1,10 +1,14 @@
 package com.example.vocaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,10 +21,12 @@ import java.util.ArrayList;
 //음성파일 처리여부?
 //인텐트 담긴 카테고리 전환 코드 작성 필요
 
-public class StudyActivity extends WordDBOpen implements View.OnClickListener {
+public class StudyActivity extends BookmarkManager implements View.OnClickListener {
 
-    ArrayList<Word> arrayDB;
+    private static final String TAG="MainActivity";
 
+
+    Button back;
     ImageButton leftBtn;
     ImageButton rightBtn;
     ImageButton Mark;
@@ -66,6 +72,8 @@ public class StudyActivity extends WordDBOpen implements View.OnClickListener {
             checked[i] = 0;
         }
 
+        back = (Button)findViewById(R.id.study_btn_back);
+
         leftBtn = (ImageButton) findViewById(R.id.leftbtn);
         rightBtn = (ImageButton) findViewById(R.id.rightbtn);
 
@@ -82,6 +90,8 @@ public class StudyActivity extends WordDBOpen implements View.OnClickListener {
 
 
         // Button 이벤트 등록
+        back.setOnClickListener(this);
+
         leftBtn.setOnClickListener(this);
         rightBtn.setOnClickListener(this);
         Mark.setOnClickListener(this);
@@ -95,19 +105,36 @@ public class StudyActivity extends WordDBOpen implements View.OnClickListener {
 
 
 
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onRestart");
+        for (int i = 0; i < 10; i++) {
+
+            checked[bookmarkdb[i]] = 1;
+        }
+        Log.d(TAG, String.valueOf(bookmarkSize));
+
+    }
+
     @Override
     public void onClick(View v) {
 
 //        //FireBase의 DB에서 사용할 단어와 뜻을 arrayList에 저장
-        for(int i=0;i<4;i++){
-            arrayList.get(i).getEnglish();
-            arrayList.get(i).getKoreanMean();
-        }
 
+
+      //  Log.d(TAG, "onclick");
+      //  Log.d(TAG, String.valueOf(bookmarkSize));
 
 
         switch (v.getId()) {
+            case R.id.study_btn_back:
+                Intent intent = new Intent(StudyActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.Tv1:
                 //뷰에 처음으로 터치 이벤트 발생 시 학습하기 페이지로 넘어감
@@ -164,6 +191,7 @@ public class StudyActivity extends WordDBOpen implements View.OnClickListener {
 
             case R.id.bookmark:
                 //북마크 됐으면 배열에 값 넣어주기
+                //id 안되어있으면 불가능하다고 Toast 메세지 띄우기
 
                 if(checked[index] == 0) {
                     Mark.setImageResource(R.drawable.fill_star);
@@ -190,4 +218,34 @@ public class StudyActivity extends WordDBOpen implements View.OnClickListener {
         }
 
     }
+
+    @Override
+    protected void onPause() { // 학습하기 화면이 꺼지면 checked[] 에 저장된 bookmark 정보를 BookmarkManager 클래스의 bookmark[] 에 저장
+        super.onPause();
+
+
+        if(currentID.equals("")){
+            Log.d(TAG,"onPause but null");
+        }
+        else {
+            Log.d(TAG,currentID);
+            bookMarkTranslate(checked);
+            BookmarkUpdate();
+        }
+    }
+
+    private void bookMarkTranslate(int[] checked){
+        int k=0;
+        for(int i=0;i<Maxlength;i++){
+            bookmark[i]=-1;
+        }
+        for(int i=0;i<Maxlength;i++) {
+            if(checked[i]==1) {
+                bookmark[k] = i;
+                k++;
+            }
+        }
+    }
+
+
 }

@@ -6,12 +6,16 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -55,7 +59,34 @@ public class Calender extends LoginActivity {
 
                 // if() -> 선택된 날짜와 history가 맞다면 학습했음 출력, 아닐시 안 했음 출력
 
-                    textView.setText(history);
+                String Syear = String.valueOf(year);
+                String Smonth =String.valueOf(month+1);
+                String Sdate;
+                if(date/10==0)
+                    Sdate = "0"+String.valueOf(date);
+                else
+                    Sdate = String.valueOf(date);
+
+                String time = Syear + Smonth + Sdate;
+                Log.d(tag,time);
+                DatabaseReference historyDB = userDB.child(currentID).child("history");
+                historyDB.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String timeDB = String.valueOf(snapshot.child(time).getValue());
+                        Log.d(tag,timeDB);
+                        if(timeDB.equals(time)){
+                            textView.setText(Syear+"년 "+Smonth+"월 "+Sdate+"일은 "+"학습하였습니다.");
+                        }else{
+                            textView.setText(Syear+"년 "+Smonth+"월 "+Sdate+"일은 "+"학습하지 않았습니다.");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 // 학습 날짜 정보에 따라 학습했음으로 setText 해주면 될 듯 -> 색칠은 구현 가능할지 아직 모르겠다..
             }
