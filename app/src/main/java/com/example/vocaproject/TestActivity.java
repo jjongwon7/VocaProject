@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //로그인 정보 처리??
-//단어 개수에 따른 프로그래스바 처리
+
 
 public class TestActivity extends UserAccount implements OnEditorActionListener{ //OnEditorActionListener 인터페이스 implement하기
 
@@ -37,7 +37,7 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
     TextView TV_1;
     TextView test_score;
     LinearLayout result;
-    FrameLayout meanFrame;
+
     LinearLayout Ly;
 
     String str1 ;
@@ -46,8 +46,22 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
     int index = 0; // 단어 참조 인덱스
     int correct[] = new int [num_of_word]; //맞은놈 틀린놈 - 작업 필요
     int score;  //단어 갯수에 따른 아래 값 수정 필요
-    int progress = (100/4); // 테스트 진도율 -수정 필요
-
+    int progress = 10; // 테스트 진도율 -수정 필요
+    int k;
+    //수정필요
+    String key1 = "btn_airport";
+    String key2 = "btn_transportation";
+    String key3 = "btn_hotel";
+    String key4 = "btn_sports";
+    String key5 = "btn_restaurant";
+    String key6 = "btn_shopping";
+    String key7 = "btn_communication";
+    String key8 = "btn_emergency";
+    String num = "";
+//1
+    String[] word=new String[8];
+    String[] korean=new String[8];
+//1
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +97,29 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
         }
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
-//        int input = Integer.parseInt(inputStr);
+
+
+        if(key.equals(key1))
+            num = "출입국.기내";
+        else if(key.equals(key2))
+            num = "교통";
+        else if(key.equals(key3))
+            num = "호텔";
+        else if(key.equals(key4))
+            num = "관광.스포츠";
+        else if(key.equals(key5))
+            num = "레스토랑";
+        else if(key.equals(key6))
+            num = "쇼핑";
+        else if(key.equals(key7))
+            num = "통신";
+        else if(key.equals(key8))
+            num = "긴급 상황";
+
+        TV_1.setText("테스트 \n "+num+"\n \n \n (터치 하세요)");
+        progressBar.setProgress(progress);
+
+
         TV_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,12 +127,17 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
                 TV_1.setVisibility(View.INVISIBLE);
                 Ly.setVisibility(View.VISIBLE);
 
+                k = whosecall(key, num_of_word);
                 for(int i=0;i < num_of_word;i++){
-                    arrayList.get(i).getEnglish();
-                    arrayList.get(i).getKoreanMean();
+                    //1
+                    word[i] = arrayList.get(k+i).getEnglish();
+                    korean[i] = arrayList.get(k+i).getKoreanMean();
+                    //1
                 }
-                t_mean.setText(arrayList.get(index).getKoreanMean());
-                progressBar.setProgress(progress);
+
+                t_mean.setText(korean[0]);
+
+
 
             }
         });
@@ -123,8 +164,8 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
                 if(index<num_of_word ){
                     //각각의 테스트 입력결과 (정답, 오답)확인 후 다음 단어로 전환
                         progressBar.setProgress(progress);
-                        str1 = arrayList.get(index).getEnglish();
-//                        tv[0].setText(""+str1);
+//                        str1 = arrayList.get(index).getEnglish();
+                        str1 = word[index];
                         if (strText.equals(str1)) {
                             score += 10;
                             showToastcorr();
@@ -136,8 +177,9 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
                         inputText.setText(null);
                         index++;
                         if(index<num_of_word)
-                            t_mean.setText(arrayList.get(index).getKoreanMean());
-                        progress += (100 / num_of_word);
+//                            t_mean.setText(arrayList.get(index).getKoreanMean());
+                            t_mean.setText(korean[index]);
+                        progress += 10;
 
                         if(index == num_of_word ){
                             inputText.setVisibility(View.GONE);
@@ -147,12 +189,12 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
                             result.setVisibility(View.VISIBLE);
                             textview.setText("정답률");
                             progressBar.setProgress(score);
-                            test_score.setText("User의 Part1 점수" + score + "점");
+                            test_score.setText("User의 "+ num + " CHAPTER 점수 " + score + "점");
                             //오답인 애들 스크롤 뷰
                             for (int i = 0; i < num_of_word; i++) {
                                 if (correct[i] == 0) {
                                     rs[i].setVisibility(View.VISIBLE);
-                                    rs[i].setText("\n"+arrayList.get(i).getEnglish()+arrayList.get(i).getKoreanMean());
+                                    rs[i].setText("\n"+word[i]+"\n"+korean[i]);
                                 }
                             }
                         }
@@ -185,5 +227,37 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
+    }
+    public int whosecall(String key, int num_of_word){
+        //어떤 챕터에서 기능 호출했는지 확인하고, 그에 해당하는 단어를 배정해주는 함수
+        int num=0;
+        String key1 = "btn_airport";
+        String key2 = "btn_transportation";
+        String key3 = "btn_hotel";
+        String key4 = "btn_sports";
+        String key5 = "btn_restaurant";
+        String key6 = "btn_shopping";
+        String key7 = "btn_communication";
+        String key8 = "btn_emergency";
+
+        if(key.equals(key1))
+            num = 0;
+        else if(key.equals(key2))
+            num = 4;
+        else if(key.equals(key3))
+            num = 8;
+        else if(key.equals(key4))
+            num = 12;
+        else if(key.equals(key5))
+            num = 16;
+        else if(key.equals(key6))
+            num = 20;
+        else if(key.equals(key7))
+            num = 24;
+        else if(key.equals(key8))
+            num = 28;
+
+        return num;
+        
     }
 }
