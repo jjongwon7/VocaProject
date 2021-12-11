@@ -114,7 +114,7 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
         Log.d(TAG, "onRestart");
         for (int i = 0; i < 10; i++) {
 
-            checked[bookmarkdb[i]] = 1;
+            //checked[bookmarkdb[i]] = 1;
         }
         Log.d(TAG, String.valueOf(bookmarkSize));
 
@@ -243,7 +243,7 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
             if(checked[i]==1) {
                 bookmark[k] = i;
                 k++;
-            }
+            }else ;
         }
     }
 

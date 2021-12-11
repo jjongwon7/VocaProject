@@ -56,9 +56,12 @@ public class BookmarkManager extends UserAccount {
 
                 int i = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 list 추출
-                    bookmarkdb[i] = Integer.parseInt(String.valueOf(snapshot.getValue())); // bookmark 배열에 DB에 저장되어 있는 북마크된 단어 번호 저장
-
-                    i++;
+                    if(snapshot.hasChildren()) {
+                        bookmarkdb[i] = Integer.parseInt(String.valueOf(snapshot.getValue())); // bookmark 배열에 DB에 저장되어 있는 북마크된 단어 번호 저장
+                        i++;
+                    } else{
+                        break;
+                    }
 
                 }
                 Log.d(tag,String.valueOf(bookmarkSize));
@@ -83,12 +86,13 @@ public class BookmarkManager extends UserAccount {
         DatabaseReference bookmarkDB = FirebaseDatabase.getInstance().getReference("VocaProject").child("UserAccount").child(currentID).child("bookmarking");
         bookmarkDB.removeValue();
         // StudyActivity에서 수정한 bookmark정보를 DB에 업로드
-        int num= bookmark.length;
+        int num= 20;
         for(int i=0;i<num;i++){
             if(bookmark[i]>=0) {
                 newBookmarkUpload(bookmark[i]);
             }
         }
+
     }
     // 새로운 북마크 업로드 메소드, 북마크된 단어의 arrayList 인덱스를 인자로 넣으면 됨
     public void newBookmarkUpload(int wordNum){

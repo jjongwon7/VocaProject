@@ -58,10 +58,10 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
     String key7 = "btn_communication";
     String key8 = "btn_emergency";
     String num = "";
-//1
+    //1
     String[] word=new String[8];
     String[] korean=new String[8];
-//1
+    //1
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,45 +163,45 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
 
                 if(index<num_of_word ){
                     //각각의 테스트 입력결과 (정답, 오답)확인 후 다음 단어로 전환
-                        progressBar.setProgress(progress);
+                    progressBar.setProgress(progress);
 //                        str1 = arrayList.get(index).getEnglish();
-                        str1 = word[index];
-                        if (strText.equals(str1)) {
-                            score += 10;
-                            showToastcorr();
-                        } else {
-                            correct[index] = 0;
-                            showToastincorr();
+                    str1 = word[index];
+                    if (strText.equals(str1)) {
+                        score += 10;
+                        showToastcorr();
+                    } else {
+                        correct[index] = 0;
+                        showToastincorr();
 
-                        }
-                        inputText.setText(null);
-                        index++;
-                        if(index<num_of_word)
+                    }
+                    inputText.setText(null);
+                    index++;
+                    if(index<num_of_word)
 //                            t_mean.setText(arrayList.get(index).getKoreanMean());
-                            t_mean.setText(korean[index]);
-                        progress += 10;
+                        t_mean.setText(korean[index]);
+                    progress += 10;
 
-                        if(index == num_of_word ){
-                            inputText.setVisibility(View.GONE);
-                            Mean.setVisibility(View.GONE);
-                            t_mean.setVisibility(View.GONE);
-                            //마지막 단어 테스트 후 결과 화면 출력
-                            result.setVisibility(View.VISIBLE);
-                            textview.setText("정답률");
-                            progressBar.setProgress(score);
-                            test_score.setText("User의 "+ num + " CHAPTER 점수 " + score + "점");
-                            //오답인 애들 스크롤 뷰
-                            for (int i = 0; i < num_of_word; i++) {
-                                if (correct[i] == 0) {
-                                    rs[i].setVisibility(View.VISIBLE);
-                                    rs[i].setText("\n"+word[i]+"\n"+korean[i]);
-                                }
+                    if(index == num_of_word ){
+                        inputText.setVisibility(View.GONE);
+                        Mean.setVisibility(View.GONE);
+                        t_mean.setVisibility(View.GONE);
+                        //마지막 단어 테스트 후 결과 화면 출력
+                        result.setVisibility(View.VISIBLE);
+                        textview.setText("정답률");
+                        progressBar.setProgress(score);
+                        test_score.setText("User의 "+ num + " CHAPTER 점수 " + score + "점");
+                        //오답인 애들 스크롤 뷰
+                        for (int i = 0; i < num_of_word; i++) {
+                            if (correct[i] == 0) {
+                                rs[i].setVisibility(View.VISIBLE);
+                                rs[i].setText("\n"+word[i]+"\n"+korean[i]);
                             }
                         }
+                    }
                 }
             }
         }
-       return false;
+        return false;
     }
 
     //커스텀 토스트 함수
@@ -258,6 +258,6 @@ public class TestActivity extends UserAccount implements OnEditorActionListener{
             num = 28;
 
         return num;
-        
+
     }
 }
