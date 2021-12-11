@@ -102,6 +102,7 @@ public class RemindActivity extends UserAccount {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RemindActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 

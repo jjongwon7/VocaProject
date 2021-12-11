@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/datePicker"
-        android:text="달력표시"
+        android:text="날짜를 선택하여 주십시오"
         android:textSize="30dp"/>
 
 </RelativeLayout>
