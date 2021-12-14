@@ -43,7 +43,19 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
 
     int checked[] = new int[Maxlength];
 
+    String key1 = "btn_airport";
+    String key2 = "btn_transportation";
+    String key3 = "btn_hotel";
+    String key4 = "btn_sports";
+    String key5 = "btn_restaurant";
+    String key6 = "btn_shopping";
+    String key7 = "btn_communication";
+    String key8 = "btn_emergency";
+    String num = "";
 
+    int k;
+    String[] word1=new String[8];
+    String[] korean=new String[8];
 
 
     // 여러개의 LinearLayout를 배열로 처리하기 위해 텍스트뷰에 대해 배열 선언을 함
@@ -106,6 +118,28 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
 
 
 
+        if(key.equals(key1))
+            num = "출입국·기내";
+        else if(key.equals(key2))
+            num = "교통";
+        else if(key.equals(key3))
+            num = "호텔";
+        else if(key.equals(key4))
+            num = "관광·스포츠";
+        else if(key.equals(key5))
+            num = "레스토랑";
+        else if(key.equals(key6))
+            num = "쇼핑";
+        else if(key.equals(key7))
+            num = "통신";
+        else if(key.equals(key8))
+            num = "긴급 상황";
+
+        Tv.setText(num+"\n학습하기\n"+"\n \n(터치 하세요)");
+
+
+
+
     }
 
     @Override
@@ -128,7 +162,13 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
 
       //  Log.d(TAG, "onclick");
       //  Log.d(TAG, String.valueOf(bookmarkSize));
-
+        k = whosecall(key, Maxlength);
+        for(int i=0;i < Maxlength;i++){
+            //1
+            word1[i] = arrayList.get(k+i).getEnglish();
+            korean[i] = arrayList.get(k+i).getKoreanMean();
+            //1
+        }
 
         switch (v.getId()) {
             case R.id.study_btn_back:
@@ -142,8 +182,11 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
                 Ly.setVisibility(View.VISIBLE);
 
                 //첫번째 단어 출력
-                word.setText(""+arrayList.get(0).getEnglish());
-                mean.setText(""+arrayList.get(0).getKoreanMean());
+                //word.setText(""+arrayList.get(0).getEnglish());
+                //mean.setText(""+arrayList.get(0).getKoreanMean());
+
+                word.setText(""+word1[index]);
+                mean.setText(""+korean[index]);
                 break;
 
             case R.id.leftbtn:
@@ -159,8 +202,10 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
                         Mark.setImageResource(R.drawable.empty_star);
                     }
                     // 이전 인덱스에 해당하는 단어와 뜻으로 화면 구성하기
-                     word.setText(""+arrayList.get(index-1).getEnglish());
-                     mean.setText(""+arrayList.get(index-1).getKoreanMean());
+//                     word.setText(""+arrayList.get(index-1).getEnglish());
+//                     mean.setText(""+arrayList.get(index-1).getKoreanMean());
+                    word.setText(""+word1[index-1]);
+                    mean.setText(""+korean[index-1]);
 
                      index--;
                  }
@@ -182,8 +227,10 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
                         Mark.setImageResource(R.drawable.empty_star);
                     }
                     // 다음 인덱스에 해당하는 단어와 뜻으로 화면 구성하기
-                    word.setText(""+arrayList.get(index+1).getEnglish());
-                    mean.setText(""+arrayList.get(index+1).getKoreanMean());
+//                    word.setText(""+arrayList.get(index+1).getEnglish());
+//                    mean.setText(""+arrayList.get(index+1).getKoreanMean());
+                    word.setText(""+word1[index+1]);
+                    mean.setText(""+korean[index+1]);
                     index++;
                 }
                 text_progress.setText((index+1)+"/20"); //참조 인덱스 확인하여 몇번째인지 출력
@@ -247,5 +294,36 @@ public class StudyActivity extends BookmarkManager implements View.OnClickListen
         }
     }
 
+    public int whosecall(String key, int num_of_word){
+        //어떤 챕터에서 기능 호출했는지 확인하고, 그에 해당하는 단어를 배정해주는 함수
+        int num=0;
+        String key1 = "btn_airport";
+        String key2 = "btn_transportation";
+        String key3 = "btn_hotel";
+        String key4 = "btn_sports";
+        String key5 = "btn_restaurant";
+        String key6 = "btn_shopping";
+        String key7 = "btn_communication";
+        String key8 = "btn_emergency";
 
+        if(key.equals(key1))
+            num = 0;
+        else if(key.equals(key2))
+            num = 4;
+        else if(key.equals(key3))
+            num = 8;
+        else if(key.equals(key4))
+            num = 12;
+        else if(key.equals(key5))
+            num = 16;
+        else if(key.equals(key6))
+            num = 20;
+        else if(key.equals(key7))
+            num = 24;
+        else if(key.equals(key8))
+            num = 28;
+
+        return num;
+
+    }
 }
