@@ -25,6 +25,19 @@ public class RemindActivity extends UserAccount {
     // 여러개의 텍스트뷰를 배열로 처리하기 위해 텍스트뷰에 대해 배열 선언을 함
     TextView remind;
 
+    String key1 = "btn_airport";
+    String key2 = "btn_transportation";
+    String key3 = "btn_hotel";
+    String key4 = "btn_sports";
+    String key5 = "btn_restaurant";
+    String key6 = "btn_shopping";
+    String key7 = "btn_communication";
+    String key8 = "btn_emergency";
+    String num = "";
+
+    int k;
+    String[] word=new String[8];
+    String[] korean=new String[8];
 
 
     @Override
@@ -39,15 +52,43 @@ public class RemindActivity extends UserAccount {
         backBtn = (Button) findViewById(R.id.btn_back);
         menuBtn = (Button) findViewById(R.id.btn_menu);
 
+        if(key.equals(key1))
+            num = "출입국·기내";
+        else if(key.equals(key2))
+            num = "교통";
+        else if(key.equals(key3))
+            num = "호텔";
+        else if(key.equals(key4))
+            num = "관광·스포츠";
+        else if(key.equals(key5))
+            num = "레스토랑";
+        else if(key.equals(key6))
+            num = "쇼핑";
+        else if(key.equals(key7))
+            num = "통신";
+        else if(key.equals(key8))
+            num = "긴급 상황";
+
+        remind.setText(num+"\n리마인드\n \n(터치 하세요)");
+
+
 
         //  클릭리스너 등록
         remind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+//                for(int i=0;i < num_of_word;i++){
+//                    arrayList.get(i).getEnglish();
+//                    arrayList.get(i).getKoreanMean();
+//                }
+
+                k = whosecall(key, num_of_word);
                 for(int i=0;i < num_of_word;i++){
-                    arrayList.get(i).getEnglish();
-                    arrayList.get(i).getKoreanMean();
+                    //1
+                    word[i] = arrayList.get(k+i).getEnglish();
+                    korean[i] = arrayList.get(k+i).getKoreanMean();
+                    //1
                 }
 
                 backBtn.setVisibility(View.VISIBLE);
@@ -59,16 +100,19 @@ public class RemindActivity extends UserAccount {
                             Toast.makeText(getApplicationContext(), "마지막 단어입니다.", Toast.LENGTH_SHORT).show();
                         }else if(btn == 0){
                             btn++;
-                            remind.setText(""+arrayList.get(index).getEnglish());
+//                            remind.setText(""+arrayList.get(index).getEnglish());
+                            remind.setText(""+word[index]);
                         }else{
                             btn++;
                             index++;
-                            remind.setText(""+arrayList.get(index).getEnglish());
+//                            remind.setText(""+arrayList.get(index).getEnglish());
+                            remind.setText(""+word[index]);
                         }
                         break;
                     case 1:
                         btn++;
-                        remind.setText(""+arrayList.get(index).getEnglish()+arrayList.get(index).getKoreanMean());
+//                        remind.setText(""+arrayList.get(index).getEnglish()+"\n\n"+arrayList.get(index).getKoreanMean());
+                        remind.setText(""+word[index]+"\n\n"+korean[index]);
                         break;
                 }
             }
@@ -82,7 +126,8 @@ public class RemindActivity extends UserAccount {
                 switch((btn % 2)){
                     case 0:
                         btn--;
-                        remind.setText(""+arrayList.get(index).getEnglish());
+//                        remind.setText(""+arrayList.get(index).getEnglish());
+                        remind.setText(""+word[index]);
                         break;
                     case 1:
                         if(btn==1){
@@ -91,7 +136,8 @@ public class RemindActivity extends UserAccount {
                         else{
                             btn--;
                             index--;
-                            remind.setText(""+arrayList.get(index).getEnglish()+arrayList.get(index).getKoreanMean());
+//                            remind.setText(""+arrayList.get(index).getEnglish()+"\n\n"+arrayList.get(index).getKoreanMean());
+                            remind.setText(""+word[index]+"\n\n"+korean[index]);
                         }
                         break;
                 }
@@ -107,5 +153,36 @@ public class RemindActivity extends UserAccount {
         });
 
     }
+    public int whosecall(String key, int num_of_word){
+        //어떤 챕터에서 기능 호출했는지 확인하고, 그에 해당하는 단어를 배정해주는 함수
+        int num=0;
+        String key1 = "btn_airport";
+        String key2 = "btn_transportation";
+        String key3 = "btn_hotel";
+        String key4 = "btn_sports";
+        String key5 = "btn_restaurant";
+        String key6 = "btn_shopping";
+        String key7 = "btn_communication";
+        String key8 = "btn_emergency";
 
+        if(key.equals(key1))
+            num = 0;
+        else if(key.equals(key2))
+            num = 4;
+        else if(key.equals(key3))
+            num = 8;
+        else if(key.equals(key4))
+            num = 12;
+        else if(key.equals(key5))
+            num = 16;
+        else if(key.equals(key6))
+            num = 20;
+        else if(key.equals(key7))
+            num = 24;
+        else if(key.equals(key8))
+            num = 28;
+
+        return num;
+
+    }
 }
