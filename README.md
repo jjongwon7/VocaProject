@@ -11,4 +11,15 @@
 ### 개발 기획
 
 #### 기능 구성도
-## ![기능 구성도](https://user-images.githubusercontent.com/64363668/183000662-1bdb3bd5-e5bb-4363-bfe6-26ecc95ad0b2.jpg)
+![기능 구성도](https://user-images.githubusercontent.com/64363668/183000662-1bdb3bd5-e5bb-4363-bfe6-26ecc95ad0b2.jpg)
+
+#### 클래스 설계
+
+
+#### 화면 구성 기획
+[화면 구성.pdf](https://github.com/jjongwon7/VocaProject/files/9265391/default.pdf)
+
+
+
+### 시연 영상
+URL : https://youtube.com/watch?v=nzbRUK8uxDA&feature=share
